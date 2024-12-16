@@ -1,0 +1,86 @@
+name: "Continuous Integration"
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: "🚀 CI"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: 3.24.4
+          channel: stable
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: 📦 Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          flutter pub global activate coverage
+
+      - name: 🦄 Generate Code
+        run: |
+          dart run build_runner build -d
+
+      - name: Install DCM
+        uses: CQLabs/setup-dcm@v1.1.1
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: ✨ Check Formatting
+        run: find lib test -name "*.dart" ! -name "*.*.dart" -print0 | xargs -0 dart format --set-exit-if-changed --line-length 100 -o none
+
+      - name: 🕵️ Analyze
+        run: flutter analyze .
+      
+        # TODO: Remove this step if you don't use DCM
+      - name: 🕵️ Analyze with DCM
+        run: dcm analyze .
+
+      - name: 🧪 Run Tests
+        run: very_good test --coverage --exclude-coverage "*.*.dart" -j 10
+
+      - name: 📥 Upload test report
+        uses: actions/upload-artifact@v4
+        if: (success() || failure()) && ${{ github.actor != 'dependabot[bot]' }}
+        with:
+          name: test-results
+          path: reports/tests.json
+
+      - name: 📈 Upload Coverage
+        uses: codecov/codecov-action@v4.5.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/lcov.info
+          name: codecov-umbrella
+          fail_ci_if_error: true
+
+  report_tests:
+    name: "🚛 Test report"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    needs: 
+      - ci
+    steps:
+      - name: Test report
+        uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: Test Report
+          path: "**/tests.json"
+          reporter: flutter-json
+          fail-on-error: false

@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "Dart-Code.dart-code",
+        "Dart-Code.flutter",
+        "redhat.vscode-yaml"
+    ],
+    "unwantedRecommendations": [
+        
+    ]
+}
