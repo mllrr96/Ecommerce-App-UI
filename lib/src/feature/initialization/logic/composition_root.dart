@@ -1,23 +1,12 @@
 import 'package:clock/clock.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizzle_starter/src/core/constant/application_config.dart';
 import 'package:sizzle_starter/src/core/utils/error_reporter/error_reporter.dart';
 import 'package:sizzle_starter/src/core/utils/error_reporter/sentry_error_reporter.dart';
 import 'package:sizzle_starter/src/core/utils/logger/logger.dart';
 import 'package:sizzle_starter/src/feature/initialization/model/dependencies_container.dart';
-import 'package:sizzle_starter/src/feature/settings/bloc/app_settings_bloc.dart';
-import 'package:sizzle_starter/src/feature/settings/data/app_settings_datasource.dart';
-import 'package:sizzle_starter/src/feature/settings/data/app_settings_repository.dart';
 
-/// {@template composition_root}
-/// A place where top-level dependencies are initialized.
-/// {@endtemplate}
-///
-/// {@template composition_process}
-/// Composition of dependencies is a process of creating and configuring
-/// instances of classes that are required for the application to work.
-/// {@endtemplate}
+
 final class CompositionRoot {
   /// {@macro composition_root}
   const CompositionRoot({
@@ -129,17 +118,13 @@ class DependenciesFactory extends AsyncFactory<DependenciesContainer> {
 
   @override
   Future<DependenciesContainer> create() async {
-    final sharedPreferences = SharedPreferencesAsync();
-
     final packageInfo = await PackageInfo.fromPlatform();
-    final settingsBloc = await AppSettingsBlocFactory(sharedPreferences).create();
 
     return DependenciesContainer(
       logger: logger,
       config: config,
       errorReporter: errorReporter,
       packageInfo: packageInfo,
-      appSettingsBloc: settingsBloc,
     );
   }
 }
@@ -180,35 +165,5 @@ class ErrorReporterFactory extends AsyncFactory<ErrorReporter> {
     }
 
     return errorReporter;
-  }
-}
-
-/// {@template app_settings_bloc_factory}
-/// Factory that creates an instance of [AppSettingsBloc].
-///
-/// The [AppSettingsBloc] should be initialized during the application startup
-/// in order to load the app settings from the local storage, so user can see
-/// their selected theme,locale, etc.
-/// {@endtemplate}
-class AppSettingsBlocFactory extends AsyncFactory<AppSettingsBloc> {
-  /// {@macro app_settings_bloc_factory}
-  const AppSettingsBlocFactory(this.sharedPreferences);
-
-  /// Shared preferences instance
-  final SharedPreferencesAsync sharedPreferences;
-
-  @override
-  Future<AppSettingsBloc> create() async {
-    final appSettingsRepository = AppSettingsRepositoryImpl(
-      datasource: AppSettingsDatasourceImpl(sharedPreferences: sharedPreferences),
-    );
-
-    final appSettings = await appSettingsRepository.getAppSettings();
-    final initialState = AppSettingsState.idle(appSettings: appSettings);
-
-    return AppSettingsBloc(
-      appSettingsRepository: appSettingsRepository,
-      initialState: initialState,
-    );
   }
 }

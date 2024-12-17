@@ -13,9 +13,6 @@ import 'package:sizzle_starter/src/feature/initialization/logic/composition_root
 import 'package:sizzle_starter/src/feature/initialization/widget/initialization_failed_app.dart';
 import 'package:sizzle_starter/src/feature/initialization/widget/root_context.dart';
 
-/// {@template app_runner}
-/// A class that is responsible for running the application.
-/// {@endtemplate}
 sealed class AppRunner {
   /// {@macro app_runner}
   const AppRunner._();
@@ -47,13 +44,7 @@ sealed class AppRunner {
 
         Future<void> launchApplication() async {
           try {
-            final compositionResult = await CompositionRoot(
-              config: config,
-              logger: logger,
-              errorReporter: errorReporter,
-            ).compose();
-
-            runApp(RootContext(compositionResult: compositionResult));
+            runApp(const RootContext());
           } on Object catch (e, stackTrace) {
             logger.error('Initialization failed', error: e, stackTrace: stackTrace);
             runApp(

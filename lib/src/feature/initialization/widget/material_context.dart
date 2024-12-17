@@ -1,44 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/constant/localization/localization.dart';
-import 'package:sizzle_starter/src/feature/home/widget/home_screen.dart';
-import 'package:sizzle_starter/src/feature/initialization/model/app_theme.dart';
-import 'package:sizzle_starter/src/feature/settings/widget/settings_scope.dart';
+import 'package:sizzle_starter/src/core/route/app_route.dart';
 
-/// {@template material_context}
-/// [MaterialContext] is an entry point to the material context.
-///
-/// This widget sets locales, themes and routing.
-/// {@endtemplate}
 class MaterialContext extends StatelessWidget {
-  /// {@macro material_context}
   const MaterialContext({super.key});
 
-  // This global key is needed for [MaterialApp]
-  // to work properly when Widgets Inspector is enabled.
-  static final _globalKey = GlobalKey();
+  static final AppRouter _appRouter = AppRouter();
 
   @override
-  Widget build(BuildContext context) {
-    final settings = SettingsScope.settingsOf(context);
-    final mediaQueryData = MediaQuery.of(context);
-
-    return MaterialApp(
-      theme: settings.appTheme?.lightTheme ?? AppTheme.defaultTheme.lightTheme,
-      darkTheme: settings.appTheme?.darkTheme ?? AppTheme.defaultTheme.darkTheme,
-      themeMode: settings.appTheme?.themeMode ?? ThemeMode.system,
-      locale: settings.locale,
-      localizationsDelegates: Localization.localizationDelegates,
-      supportedLocales: Localization.supportedLocales,
-      home: const HomeScreen(),
-      builder: (context, child) => MediaQuery(
-        key: _globalKey,
-        data: mediaQueryData.copyWith(
-          textScaler: TextScaler.linear(
-            mediaQueryData.textScaler.scale(settings.textScale ?? 1).clamp(0.5, 2),
-          ),
+  Widget build(BuildContext context) => ShadApp.router(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: Localization.localizationDelegates,
+        supportedLocales: Localization.supportedLocales,
+        routerConfig: _appRouter.config(),
+        themeMode: ThemeMode.light,
+        theme: ShadThemeData(
+          colorScheme: const ShadStoneColorScheme.light(),
+          brightness: Brightness.light,
+          textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.openSans),
         ),
-        child: child!,
-      ),
-    );
-  }
+        darkTheme: ShadThemeData(
+          colorScheme: const ShadSlateColorScheme.dark(),
+          brightness: Brightness.dark,
+          textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.openSans),
+        ),
+      );
 }

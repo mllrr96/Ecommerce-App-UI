@@ -8,7 +8,7 @@ tasks:
     cmds:
       - flutter pub get
 
-  dart:gen:
+  gen:
     desc: Generate dart files
     summary: |
       Run codegen
