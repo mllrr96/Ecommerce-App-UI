@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 import 'package:sizzle_starter/src/feature/home/widget/filters.dart';
 
@@ -31,13 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final buttonDecoration =
-        context.shadTheme.outlineButtonTheme.decoration?.copyWith(
+    context.shadTheme.outlineButtonTheme.decoration?.copyWith(
       border: context.shadTheme.outlineButtonTheme.decoration?.border?.copyWith(
         radius: BorderRadius.circular(12),
       ),
     );
     return Scaffold(
+      appBar: const EAppBar(title: 'Discover'),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Column(
@@ -47,19 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Discover', style: context.shadTheme.textTheme.h2),
-                      IconButton(
-                        padding: const EdgeInsets.all(14),
-                        onPressed: () =>
-                            context.pushRoute(const NotificationsRoute()),
-                        icon: const Icon(EcommerceIcons.bell),
-                      ),
-                    ],
-                  ),
-                  const Gap(16.0),
+                  const Gap(8.0),
                   Row(
                     children: [
                       Flexible(

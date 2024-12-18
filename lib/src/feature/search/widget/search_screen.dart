@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 
 @RoutePage()
@@ -30,41 +31,12 @@ class _SearchScreenState extends State<SearchScreen> {
     return GestureDetector(
       onTap: context.unfocus,
       child: Scaffold(
+        appBar: const EAppBar(
+          title: 'Search',
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (!isInDashboard)
-                    IconButton(
-                      padding: const EdgeInsets.all(24.0),
-                      onPressed: context.maybePop,
-                      icon: const Icon(EcommerceIcons.arrow),
-                    ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (isInDashboard) const Gap(24.0),
-                      Text(
-                        'Search',
-                        style: context.shadTheme.textTheme.h2,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        padding: const EdgeInsets.all(14),
-                        onPressed: () =>
-                            context.pushRoute(const NotificationsRoute()),
-                        icon: const Icon(EcommerceIcons.bell),
-                      ),
-                      const Gap(24.0),
-                    ],
-                  ),
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(

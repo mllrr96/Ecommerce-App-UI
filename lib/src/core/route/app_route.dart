@@ -14,7 +14,17 @@ class AppRouter extends RootStackRouter {
             AutoRoute(page: SearchRoute.page),
             AutoRoute(page: SavedRoute.page),
             AutoRoute(page: CartRoute.page),
-            AutoRoute(page: AccountRoute.page),
+            AutoRoute(
+              page: AccountNavRoute.page,
+              children: [
+                AutoRoute(page: AccountRoute.page, initial: true),
+                AutoRoute(page: FaqRoute.page),
+                AutoRoute(page: HelpCenterRoute.page),
+                AutoRoute(page: MyDetailsRoute.page),
+                AutoRoute(page: MyOrdersRoute.page),
+                AutoRoute(page: NotificationsAccountRoute.page),
+              ],
+            ),
           ],
         ),
         // Auth Routes
@@ -25,12 +35,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: VerificationCodeRoute.page),
         // Onboard Routes
         AutoRoute(page: OnboardRoute.page),
-        // Account Routes
-        AutoRoute(page: FaqRoute.page),
-        AutoRoute(page: HelpCenterRoute.page),
-        AutoRoute(page: MyDetailsRoute.page),
-        AutoRoute(page: MyOrdersRoute.page),
-        AutoRoute(page: NotificationsAccountRoute.page),
+
         // Notifications Route
         AutoRoute(page: NotificationsRoute.page),
         // Search Route
