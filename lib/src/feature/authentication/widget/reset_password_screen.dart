@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 
 @RoutePage()
@@ -61,12 +63,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     children: [
                       Text(
                         'Reset Password',
-                        style: context.shadTheme.textTheme.h2,
+                        style: context.h2,
                       ),
                       const Gap(8.0),
                       Text(
                         'Set the new password for your account so you can login again and access all the features.',
-                        style: context.shadTheme.textTheme.muted,
+                        style: context.b1Regular.copyWithColor(EColors.primary500),
                       ),
                       const Gap(24.0),
                       Focus(

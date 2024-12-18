@@ -12,7 +12,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: EAppBar(
           title: 'Notifications',
-          titleStyle: context.shadTheme.textTheme.h3,
+          titleStyle: context.h3,
           onNotificationTap: (){},
         ),
         body: const SafeArea(

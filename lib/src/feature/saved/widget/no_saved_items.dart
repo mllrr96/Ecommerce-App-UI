@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 
 class NoSavedItems extends StatelessWidget {
   const NoSavedItems({super.key});
@@ -16,15 +18,12 @@ class NoSavedItems extends StatelessWidget {
             const Gap(16.0),
             Text(
               'No Saved Items!',
-              style: context.shadTheme.textTheme.h4,
+              style: context.h4,
             ),
             const Gap(12.0),
-            const Text(
+            Text(
               'You don’t have any saved items.\nGo to home and add some.',
-              style: TextStyle(
-                color: Color(0xff808080),
-                fontSize: 16.0,
-              ),
+              style: context.b1Regular.copyWithColor(EColors.primary500),
               textAlign: TextAlign.center,
             ),
           ],

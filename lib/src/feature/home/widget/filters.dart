@@ -37,7 +37,7 @@ class _FiltersState extends State<Filters> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Filters', style: context.shadTheme.textTheme.h4),
+                Text('Filters', style: context.h4),
                 const CloseButton(),
               ],
             ),

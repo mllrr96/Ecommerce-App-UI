@@ -27,7 +27,7 @@ class NoOrders extends StatelessWidget {
             const Gap(16.0),
             Text(
               title,
-              style: context.shadTheme.textTheme.h4,
+              style: context.h4,
             ),
             const Gap(12.0),
             Text(

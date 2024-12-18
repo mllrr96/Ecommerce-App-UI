@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 
 @RoutePage()
@@ -78,12 +80,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       'Login to your account',
-                      style: context.shadTheme.textTheme.h2,
+                      style: context.h2,
                     ),
                     const Gap(8.0),
                     Text(
                       "It's great to see you again.",
-                      style: context.shadTheme.textTheme.muted,
+                      style: context.b1Regular.copyWithColor(EColors.primary500),
                     ),
                     const Gap(24.0),
                     ShadInputFormField(
@@ -202,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context.shadTheme.primaryButtonTheme.copyWith(
                           backgroundColor: const Color(0xff1877F2),
                           pressedBackgroundColor:
-                              const Color(0xff1877F2).withOpacity(0.8),
+                              const Color(0xff1877F2).withValues(alpha: 0.8),
                         ),
                       ),
                       child: ShadButton(

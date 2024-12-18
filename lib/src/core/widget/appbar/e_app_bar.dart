@@ -40,7 +40,7 @@ class EAppBar extends StatelessWidget implements PreferredSizeWidget {
               if (isInDashboard) const Gap(24.0),
               Text(
                 title,
-                style: titleStyle ?? context.shadTheme.textTheme.h2,
+                style: titleStyle ?? context.h2,
               ),
             ],
           ),

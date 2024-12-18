@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 
@@ -65,15 +67,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       children: [
                         Text(
                           'Recent Searches',
-                          style: context.shadTheme.textTheme.h4,
+                          style: context.h4,
                         ),
                         ShadButton.ghost(
                           onPressed: () => setState(searchHistory.clear),
                           child: Text(
                             'Clear all',
-                            style: context.shadTheme.textTheme.list.copyWith(
-                              color: const Color(0xff808080),
-                            ),
+                            style: context.b2Medium.copyWithColor(EColors.primary500),
                           ),
                         ),
                       ],

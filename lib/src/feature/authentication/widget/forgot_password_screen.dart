@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 
 @RoutePage()
@@ -56,12 +58,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     children: [
                       Text(
                         'Forgot password',
-                        style: context.shadTheme.textTheme.h2,
+                        style: context.h2,
                       ),
                       const Gap(8.0),
                       Text(
                         'Enter your email address for the verification process.\nWe will send 4 digit code to your email.',
-                        style: context.shadTheme.textTheme.muted,
+                        style: context.b1Regular.copyWithColor(EColors.primary500),
                       ),
                       ShadInputFormField(
                         controller: emailCtrl,

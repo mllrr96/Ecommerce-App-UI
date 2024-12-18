@@ -15,7 +15,7 @@ class NotificationContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(20.0),
-            Text('Today', style: context.shadTheme.textTheme.h4),
+            Text('Today', style: context.h4),
             ListTile(
               leading: const Icon(EcommerceIcons.discount),
               title: const Text('30% Special Discount!'),
@@ -29,7 +29,7 @@ class NotificationContent extends StatelessWidget {
             ),
             const Divider(),
             const Gap(20.0),
-            Text('Yesterday', style: context.shadTheme.textTheme.h4),
+            Text('Yesterday', style: context.h4),
             ListTile(
               leading: const Icon(Icons.wallet_giftcard),
               title: const Text('Top Up E-wallet Successfully!'),
@@ -55,7 +55,7 @@ class NotificationContent extends StatelessWidget {
             ),
             const Divider(),
             const Gap(20.0),
-            Text('June 7, 2024', style: context.shadTheme.textTheme.h4),
+            Text('June 7, 2024', style: context.h4),
             ListTile(
               leading: const Icon(EcommerceIcons.card),
               title: const Text('Credit Card Connected!'),
