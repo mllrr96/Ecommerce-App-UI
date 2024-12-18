@@ -157,7 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       statesController: shadStatesController,
                       height: 54,
-                      onPressed: () {},
+                      onPressed: () => context.router.replaceAll([
+                        const DashboardRoute(),
+                      ]),
                       child: const Text('Login'),
                     ),
                     const Gap(24.0),

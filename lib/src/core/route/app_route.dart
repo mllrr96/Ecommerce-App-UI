@@ -6,6 +6,7 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page, initial: true),
+        AutoRoute(page: SearchRoute.page),
         AutoRoute(
           page: DashboardRoute.page,
           children: [
@@ -30,6 +31,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: MyDetailsRoute.page),
         AutoRoute(page: MyOrdersRoute.page),
         AutoRoute(page: NotificationsAccountRoute.page),
+        // Notifications Route
+        AutoRoute(page: NotificationsRoute.page),
+        // Search Route
         //
       ];
 }

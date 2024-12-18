@@ -30,8 +30,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    onTap: context.unfocus,
-    child: Scaffold(
+        onTap: context.unfocus,
+        child: Scaffold(
           body: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +75,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         child: ShadInputFormField(
                           controller: passwordCtrl,
                           textInputAction: TextInputAction.next,
-                          onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+                          onSubmitted: (_) =>
+                              FocusScope.of(context).nextFocus(),
                           keyboardType: TextInputType.visiblePassword,
                           label: const Text('Password'),
                           obscureText: !isPasswordVisible,
@@ -86,22 +87,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             width: 52,
                             child: showEye
                                 ? IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isPasswordVisible = !isPasswordVisible;
-                                });
-                                shadStatesController.value =
-                                isPasswordVisible
-                                    ? {ShadState.disabled}
-                                    : {ShadState.focused};
-                              },
-                              icon: Icon(
-                                isPasswordVisible
-                                    ? EcommerceIcons.eye_off
-                                    : EcommerceIcons.eye,
-                                color: Colors.grey,
-                              ),
-                            )
+                                    onPressed: () {
+                                      setState(() {
+                                        isPasswordVisible = !isPasswordVisible;
+                                      });
+                                      shadStatesController.value =
+                                          isPasswordVisible
+                                              ? {ShadState.disabled}
+                                              : {ShadState.focused};
+                                    },
+                                    icon: Icon(
+                                      isPasswordVisible
+                                          ? EcommerceIcons.eye_off
+                                          : EcommerceIcons.eye,
+                                      color: Colors.grey,
+                                    ),
+                                  )
                                 : null,
                           ),
                         ),
@@ -123,22 +124,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             width: 52,
                             child: showEye2
                                 ? IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isPasswordVisible2 = !isPasswordVisible2;
-                                });
-                                shadStatesController.value =
-                                isPasswordVisible2
-                                    ? {ShadState.disabled}
-                                    : {ShadState.focused};
-                              },
-                              icon: Icon(
-                                isPasswordVisible2
-                                    ? EcommerceIcons.eye_off
-                                    : EcommerceIcons.eye,
-                                color: Colors.grey,
-                              ),
-                            )
+                                    onPressed: () {
+                                      setState(() {
+                                        isPasswordVisible2 =
+                                            !isPasswordVisible2;
+                                      });
+                                      shadStatesController.value =
+                                          isPasswordVisible2
+                                              ? {ShadState.disabled}
+                                              : {ShadState.focused};
+                                    },
+                                    icon: Icon(
+                                      isPasswordVisible2
+                                          ? EcommerceIcons.eye_off
+                                          : EcommerceIcons.eye,
+                                      color: Colors.grey,
+                                    ),
+                                  )
                                 : null,
                           ),
                         ),
@@ -152,8 +154,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   child: ShadButton(
                     height: 54,
                     width: context.width,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     child: const Text('Send Code'),
                   ),
                 ),
@@ -162,5 +163,5 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             ),
           ),
         ),
-  );
+      );
 }
