@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
@@ -16,6 +15,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<String> _categories = [
+    'All',
+    'T shirt',
+    'Jeans',
+    'Shoes',
+    'Hoodies',
+  ];
+  String selectedCategory = 'All';
+
   @override
   void initState() {
     super.initState();
@@ -122,37 +130,35 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 52,
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 50,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 scrollDirection: Axis.horizontal,
-                children: [
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('All'),
-                  ),
-                  ShadButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('T shirt'),
-                  ),
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Jeans'),
-                  ),
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Shoes'),
-                  ),
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Hoodies'),
-                  ),
-                ],
+                itemCount: _categories.length,
+                separatorBuilder: (_, __) => const Gap(10.0),
+                itemBuilder: (context, index) {
+                  final category = _categories[index];
+                  final isSelected = category == selectedCategory;
+                  return ActionChip(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    side: BorderSide(
+                      color:
+                          isSelected ? Colors.black : const Color(0xffE6E6E6),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    backgroundColor: isSelected ? Colors.black : null,
+                    label: Text(category),
+                    labelStyle: TextStyle(
+                      color: isSelected ? Colors.white : Colors.black,
+                      fontSize: 16.0,
+                    ),
+                    onPressed: () =>
+                        setState(() => selectedCategory = category),
+                  );
+                },
               ),
             ),
           ],

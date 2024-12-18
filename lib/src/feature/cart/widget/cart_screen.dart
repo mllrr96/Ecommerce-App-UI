@@ -6,5 +6,9 @@ class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => const Placeholder();
+  Widget build(BuildContext context) => Scaffold(
+    body: Center(
+      child: Text('Cart Screen'),
+    ),
+  );
 }

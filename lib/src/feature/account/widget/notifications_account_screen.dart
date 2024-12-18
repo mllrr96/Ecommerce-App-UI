@@ -6,5 +6,9 @@ class NotificationsAccountScreen extends StatelessWidget {
   const NotificationsAccountScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => const Placeholder();
+  Widget build(BuildContext context) => const Scaffold(
+        body: Center(
+          child: Text('Notifications Account Screen'),
+        ),
+      );
 }

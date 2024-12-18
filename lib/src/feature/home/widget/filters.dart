@@ -3,18 +3,23 @@ import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 
-class Filters extends StatelessWidget {
+class Filters extends StatefulWidget {
   const Filters({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final buttonDecoration =
-    context.shadTheme.outlineButtonTheme.decoration?.copyWith(
-      border: context.shadTheme.outlineButtonTheme.decoration?.border?.copyWith(
-        radius: BorderRadius.circular(12),
-      ),
-    );
-    return Padding(
+  State<Filters> createState() => _FiltersState();
+}
+
+class _FiltersState extends State<Filters> {
+  final List<String> _sortCategory = [
+    'Relevance',
+    'Price: Low - High',
+    'Price: High - Low',
+  ];
+
+  String selectedCategory = 'Relevance';
+  @override
+  Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,26 +46,33 @@ class Filters extends StatelessWidget {
             const Gap(10.0),
             SizedBox(
               height: 52,
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  ShadButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Relevance'),
-                  ),
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Price: Low - High'),
-                  ),
-                  ShadButton.outline(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: buttonDecoration,
-                    child: const Text('Price: High - Low'),
-                  ),
-                ],
+                itemCount: _sortCategory.length,
+                separatorBuilder: (_,__)=> const Gap(10.0),
+                itemBuilder: (context, index) {
+                  final category = _sortCategory[index];
+                  final isSelected = selectedCategory == category;
+                  return ActionChip(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    side: BorderSide(
+                      color:
+                      isSelected ? Colors.black : const Color(0xffE6E6E6),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    backgroundColor: isSelected ? Colors.black : null,
+                    label: Text(category),
+                    labelStyle: TextStyle(
+                      color: isSelected ? Colors.white : Colors.black,
+                      fontSize: 16.0,
+                    ),
+                    onPressed: () =>
+                        setState(() => selectedCategory = category),
+                  );
+                } ,
               ),
             ),
             const Divider(height: 30),
@@ -84,5 +96,4 @@ class Filters extends StatelessWidget {
           ],
         ),
       );
-  }
 }

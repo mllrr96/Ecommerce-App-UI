@@ -6,5 +6,9 @@ class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => const Placeholder();
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: Text('FAQ Screen'),
+        ),
+      );
 }
