@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 
@@ -33,7 +34,7 @@ class NoOrders extends StatelessWidget {
             Text(
               description,
               style: const TextStyle(
-                color: Color(0xff808080),
+                color: EColors.primary500,
                 fontSize: 16.0,
               ),
               textAlign: TextAlign.center,

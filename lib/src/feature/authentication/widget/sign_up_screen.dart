@@ -86,7 +86,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const Gap(8.0),
                     Text(
                       "Let's create your account.",
-                      style: context.b1Regular.copyWithColor(EColors.primary500),
+                      style:
+                          context.b1Regular.copyWithColor(EColors.primary500),
                     ),
                     const Gap(24.0),
                     ShadInputFormField(
@@ -221,9 +222,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       data: context.shadTheme.copyWith(
                         primaryButtonTheme:
                             context.shadTheme.primaryButtonTheme.copyWith(
-                          backgroundColor: const Color(0xff1877F2),
+                          backgroundColor: EColors.facebookBlue,
                           pressedBackgroundColor:
-                              const Color(0xff1877F2).withValues(alpha: 0.8),
+                              EColors.facebookBlue.withValues(alpha: 0.8),
                         ),
                       ),
                       child: ShadButton(

@@ -53,12 +53,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         padding: EdgeInsets.symmetric(vertical: 14),
                         child: Icon(
                           EcommerceIcons.search,
-                          color: Color(0xffB3B3B3),
+                          color: EColors.primary300,
                         ),
                       ),
                       suffix: const Icon(
                         EcommerceIcons.mic,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                     ),
                     const Gap(8.0),
@@ -73,7 +73,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           onPressed: () => setState(searchHistory.clear),
                           child: Text(
                             'Clear all',
-                            style: context.b2Medium.copyWithColor(EColors.primary500),
+                            style: context.b2Medium
+                                .copyWithColor(EColors.primary500),
                           ),
                         ),
                       ],
@@ -99,7 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                         icon: const Icon(
                           EcommerceIcons.cancel_circle,
-                          color: Color(0xff999999),
+                          color: EColors.primary400,
                         ),
                       ),
                       onTap: () {},

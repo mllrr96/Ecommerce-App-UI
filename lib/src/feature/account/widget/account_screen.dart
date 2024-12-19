@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
@@ -34,7 +35,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('My Orders'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () {
                         AutoRouter.of(context).push(const MyOrdersRoute());
@@ -47,7 +48,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('My Details'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () => context.pushRoute(const MyDetailsRoute()),
                     ),
@@ -57,7 +58,7 @@ class AccountScreen extends StatelessWidget {
                       title: Text('Address Book'),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       // onTap: () => context.pushRoute(const AddressRoute()),
                     ),
@@ -68,7 +69,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('Payment Methods'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () =>
                           context.pushRoute(const PaymentMethodRoute()),
@@ -79,7 +80,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('Notifications'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () =>
                           context.pushRoute(const NotificationsAccountRoute()),
@@ -90,7 +91,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('FAQs'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () => context.pushRoute(const FaqRoute()),
                     ),
@@ -100,7 +101,7 @@ class AccountScreen extends StatelessWidget {
                       title: const Text('Help Center'),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffB3B3B3),
+                        color: EColors.primary300,
                       ),
                       onTap: () => context.pushRoute(const HelpCenterRoute()),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 
 class Filters extends StatefulWidget {
@@ -29,7 +30,7 @@ class _FiltersState extends State<Filters> {
                 width: 64,
                 height: 6,
                 decoration: BoxDecoration(
-                  color: const Color(0xffE6E6E6),
+                  color: EColors.primary100,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -58,7 +59,7 @@ class _FiltersState extends State<Filters> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     side: BorderSide(
                       color:
-                      isSelected ? Colors.black : const Color(0xffE6E6E6),
+                      isSelected ? Colors.black : EColors.primary100,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

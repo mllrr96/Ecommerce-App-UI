@@ -17,11 +17,13 @@ class MaterialContext extends StatelessWidget {
         routerConfig: _appRouter.config(),
         themeMode: ThemeMode.light,
         theme: ShadThemeData(
+          disableSecondaryBorder: true,
           colorScheme: const ShadStoneColorScheme.light(),
           brightness: Brightness.light,
           textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.openSans),
         ),
         darkTheme: ShadThemeData(
+          disableSecondaryBorder: true,
           colorScheme: const ShadSlateColorScheme.dark(),
           brightness: Brightness.dark,
           textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.openSans),

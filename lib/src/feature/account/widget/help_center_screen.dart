@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
@@ -16,7 +17,7 @@ class HelpCenterScreen extends StatelessWidget {
           data: context.theme.copyWith(
               listTileTheme: context.theme.listTileTheme.copyWith(
             shape: const RoundedRectangleBorder(
-              side: BorderSide(color: Color(0xffE6E6E6), width: 2),
+              side: BorderSide(color: EColors.primary100, width: 2),
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
           ),),

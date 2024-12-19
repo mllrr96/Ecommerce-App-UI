@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
+import 'package:sizzle_starter/src/feature/cart/widget/empty_cart.dart';
 
 @RoutePage()
 class CartScreen extends StatelessWidget {
@@ -7,8 +9,16 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Scaffold(
-    body: Center(
-      child: Text('Cart Screen'),
-    ),
-  );
+        appBar: EAppBar(title: 'Cart'),
+        body: Column(
+          children: [
+            Divider(
+              indent: 24,
+              endIndent: 24,
+              height: 0,
+            ),
+            Expanded(child: EmptyCart()),
+          ],
+        ),
+      );
 }

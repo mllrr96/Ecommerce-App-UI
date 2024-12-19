@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
 import 'package:sizzle_starter/src/core/widget/icons/ecommerce_icons.dart';
 import 'package:sizzle_starter/src/feature/home/widget/filters.dart';
@@ -61,29 +63,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: const Color(0xffB3B3B3),
+                                color: EColors.primary300,
                               ),
                             ),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       EcommerceIcons.search,
-                                      color: Color(0xffB3B3B3),
+                                      color: EColors.primary300,
                                     ),
-                                    Gap(12.0),
+                                    const Gap(12.0),
                                     Text(
                                       'Search for clothes...',
-                                      style:
-                                          TextStyle(color: Color(0xff999999)),
+                                      style: context.b1Regular
+                                          .copyWithColor(EColors.primary400),
                                     ),
                                   ],
                                 ),
-                                Icon(
+                                const Icon(
                                   EcommerceIcons.mic,
-                                  color: Color(0xffB3B3B3),
+                                  color: EColors.primary300,
                                 ),
                               ],
                             ),
@@ -133,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     side: BorderSide(
                       color:
-                          isSelected ? Colors.black : const Color(0xffE6E6E6),
+                          isSelected ? Colors.black : EColors.primary100,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

@@ -85,7 +85,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Gap(8.0),
                     Text(
                       "It's great to see you again.",
-                      style: context.b1Regular.copyWithColor(EColors.primary500),
+                      style:
+                          context.b1Regular.copyWithColor(EColors.primary500),
                     ),
                     const Gap(24.0),
                     ShadInputFormField(
@@ -202,9 +203,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       data: context.shadTheme.copyWith(
                         primaryButtonTheme:
                             context.shadTheme.primaryButtonTheme.copyWith(
-                          backgroundColor: const Color(0xff1877F2),
+                          backgroundColor: EColors.facebookBlue,
                           pressedBackgroundColor:
-                              const Color(0xff1877F2).withValues(alpha: 0.8),
+                              EColors.facebookBlue.withValues(alpha: 0.8),
                         ),
                       ),
                       child: ShadButton(
