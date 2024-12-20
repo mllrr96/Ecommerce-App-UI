@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/constant/colors.dart';
-import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
@@ -84,7 +83,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: Stack(
                   children: [
                     ShadImage(
-                      Assets.images.products.product1.path,
+                      widget.product.imageUrl,
                       width: double.infinity,
                     ),
                     Align(
@@ -124,7 +123,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
               const Gap(12),
               Text(
-                'Regular Fit Slogan',
+                widget.product.name,
                 style: context.h3,
               ),
               const Gap(12),
@@ -137,54 +136,62 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
               const Gap(12),
               Text(
-                'The name says it all, the right size slightly snugs the body leaving enough room for comfort in the sleeves and waist.',
+                widget.product.description,
                 style: context.b1Regular.copyWithColor(EColors.primary500),
               ),
               const Gap(12),
-              Text('Choose Size', style: context.h4),
-              const Gap(12),
-              SizedBox(
-                height: 50,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final item = widget.product.variants[index];
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(8),
-                      onTap: () => setState(() {
-                        selectedVariant = item;
-                      }),
-                      child: Container(
-                        height: 50,
-                        constraints: const BoxConstraints(minWidth: 50),
-                        decoration: BoxDecoration(
-                          color: isVariantSelected && selectedVariant == item
-                              ? EColors.primary900
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: isVariantSelected && selectedVariant == item
-                                ? EColors.primary900
-                                : EColors.primary100,
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            item,
-                            style: context.h4.copyWithColor(
-                              isVariantSelected && selectedVariant == item
-                                  ? Colors.white
-                                  : EColors.primary900,
+              if (widget.product.variants.isNotEmpty)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Choose Size', style: context.h4),
+                    const Gap(12),
+                    SizedBox(
+                      height: 50,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final item = widget.product.variants[index];
+                          return InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => setState(() {
+                              selectedVariant = item;
+                            }),
+                            child: Container(
+                              height: 50,
+                              constraints: const BoxConstraints(minWidth: 50),
+                              decoration: BoxDecoration(
+                                color:
+                                    isVariantSelected && selectedVariant == item
+                                        ? EColors.primary900
+                                        : Colors.transparent,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: isVariantSelected &&
+                                          selectedVariant == item
+                                      ? EColors.primary900
+                                      : EColors.primary100,
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  item,
+                                  style: context.h4.copyWithColor(
+                                    isVariantSelected && selectedVariant == item
+                                        ? Colors.white
+                                        : EColors.primary900,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
+                        separatorBuilder: (_, __) => const Gap(10.0),
+                        itemCount: widget.product.variants.length,
                       ),
-                    );
-                  },
-                  separatorBuilder: (_, __) => const Gap(10.0),
-                  itemCount: widget.product.variants.length,
+                    ),
+                  ],
                 ),
-              ),
             ],
           ),
         ),

@@ -1,11 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/constant/colors.dart';
-import 'package:sizzle_starter/src/core/constant/dummy_products.dart';
 import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
-import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
 
@@ -17,14 +14,7 @@ class NoSavedItems extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () => context.pushRoute(
-                ProductDetailsRoute(
-                  product: products.first,
-                ),
-              ),
-              child: ShadImage(Assets.images.heartDuotone.path),
-            ),
+            ShadImage(Assets.images.heartDuotone.path),
             const Gap(16.0),
             Text(
               'No Saved Items!',

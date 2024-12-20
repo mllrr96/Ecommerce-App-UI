@@ -27,6 +27,14 @@ class _SearchScreenState extends State<SearchScreen> {
     'Winter clothes',
   ];
 
+  final scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final isInDashboard = context.router.current.name == DashboardRoute.name;
@@ -43,18 +51,19 @@ class _SearchScreenState extends State<SearchScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
                   children: [
+                    const Gap(8.0),
                     ShadInputFormField(
                       autofocus: !isInDashboard,
                       textInputAction: TextInputAction.search,
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 14,
+                      ),
                       placeholder: const Text('Search for clothes...'),
                       cursorHeight: 30,
-                      prefix: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 14),
-                        child: Icon(
-                          EcommerceIcons.search,
-                          color: EColors.primary300,
-                        ),
+                      prefix: const Icon(
+                        EcommerceIcons.search,
+                        color: EColors.primary300,
                       ),
                       suffix: const Icon(
                         EcommerceIcons.mic,
@@ -84,6 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               Expanded(
                 child: ListView.separated(
+                  controller: scrollController,
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   itemBuilder: (context, index) {
                     final item = searchHistory[index];

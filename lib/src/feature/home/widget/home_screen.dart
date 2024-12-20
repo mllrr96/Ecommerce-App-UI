@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/constant/colors.dart';
+import 'package:sizzle_starter/src/core/constant/dummy_products.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/text_style_extension.dart';
@@ -26,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'Hoodies',
   ];
   String selectedCategory = 'All';
+  List<bool> favorites = List.generate(products.length, (index) => false);
 
   @override
   void initState() {
@@ -57,37 +60,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
                           onTap: () => context.pushRoute(const SearchRoute()),
-                          child: Ink(
-                            height: 52,
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
+                          child: const AbsorbPointer(
+                            child: ShadInput(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 14,
+                              ),
+                              placeholder: Text('Search for clothes...'),
+                              readOnly: true,
+                              prefix: Icon(
+                                EcommerceIcons.search,
                                 color: EColors.primary300,
                               ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      EcommerceIcons.search,
-                                      color: EColors.primary300,
-                                    ),
-                                    const Gap(12.0),
-                                    Text(
-                                      'Search for clothes...',
-                                      style: context.b1Regular
-                                          .copyWithColor(EColors.primary400),
-                                    ),
-                                  ],
-                                ),
-                                const Icon(
-                                  EcommerceIcons.mic,
-                                  color: EColors.primary300,
-                                ),
-                              ],
+                              suffix: Icon(
+                                EcommerceIcons.mic,
+                                color: EColors.primary300,
+                              ),
                             ),
                           ),
                         ),
@@ -102,8 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         child: Ink(
-                          height: 52,
-                          width: 52,
+                          height: 56,
+                          width: 56,
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(8),
@@ -134,8 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     side: BorderSide(
-                      color:
-                          isSelected ? Colors.black : EColors.primary100,
+                      color: isSelected ? Colors.black : EColors.primary100,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -148,6 +135,103 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onPressed: () =>
                         setState(() => selectedCategory = category),
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.7,
+                  crossAxisSpacing: 24,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  final isFavorite = favorites[index];
+                  return InkWell(
+                    onTap: () => context.pushRoute(
+                      ProductDetailsRoute(product: product),
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Stack(
+                            children: [
+                              Align(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    product.imageUrl,
+                                    fit: BoxFit.fitWidth,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(10),
+                                      onTap: () => setState(
+                                        () => favorites[index] = !isFavorite,
+                                      ),
+                                      child: Ink(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.white,
+                                        ),
+                                        height: 34,
+                                        width: 34,
+                                        child: Center(
+                                          child: Icon(
+                                            isFavorite
+                                                ? EcommerceIcons.heart_filled
+                                                : EcommerceIcons.heart,
+                                            color:
+                                                isFavorite ? Colors.red : null,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Gap(8.0),
+                              Text(
+                                product.name,
+                                style: context.b1SemiBold,
+                              ),
+                              const Gap(4.0),
+                              Text(
+                                '\$ ${product.price}',
+                                style: context.b3Medium
+                                    .copyWithColor(EColors.primary500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
