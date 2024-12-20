@@ -23,7 +23,7 @@ class DashboardScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Divider(height: 0),
+                const Divider(),
                 BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
                   currentIndex: tabsRouter.activeIndex,

@@ -38,7 +38,14 @@ class AppRouter extends RootStackRouter {
 
         // Notifications Route
         AutoRoute(page: NotificationsRoute.page),
-        // Search Route
+        // Product Route
+        AutoRoute(page: ProductDetailsRoute.page),
+        // Cart Routes
+        AutoRoute(page: CheckoutRoute.page),
+        AutoRoute(page: AddressRoute.page),
+        AutoRoute(page: NewAddressRoute.page),
+        AutoRoute(page: NewCardRoute.page),
+        AutoRoute(page: PaymentMethodRoute.page),
         //
       ];
 }

@@ -15,7 +15,6 @@ class CartScreen extends StatelessWidget {
             Divider(
               indent: 24,
               endIndent: 24,
-              height: 0,
             ),
             Expanded(child: EmptyCart()),
           ],

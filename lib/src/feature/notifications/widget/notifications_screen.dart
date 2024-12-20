@@ -19,7 +19,6 @@ class NotificationsScreen extends StatelessWidget {
           child: Column(
             children: [
               Divider(
-                height: 0,
                 indent: 24,
                 endIndent: 24,
               ),

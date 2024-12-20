@@ -24,38 +24,41 @@ class EAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isInDashboard = isBackButtonVisible != null
         ? !isBackButtonVisible!
         : context.router.current.name == DashboardRoute.name;
-    return SafeArea(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (!isInDashboard)
-            IconButton(
-              padding: const EdgeInsets.all(16.0),
-              onPressed: context.maybePop,
-              icon: const Icon(EcommerceIcons.arrow),
-            ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (isInDashboard) const Gap(24.0),
-              Text(
-                title,
-                style: titleStyle ?? context.h2,
-              ),
-            ],
-          ),
-          Row(
-            children: [
+    return ColoredBox(
+      color: Colors.white,
+      child: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (!isInDashboard)
               IconButton(
-                padding: const EdgeInsets.all(14),
-                onPressed: onNotificationTap ??
-                    () => context.pushRoute(const NotificationsRoute()),
-                icon: const Icon(EcommerceIcons.bell),
+                padding: const EdgeInsets.all(16.0),
+                onPressed: context.maybePop,
+                icon: const Icon(EcommerceIcons.arrow),
               ),
-              const Gap(24.0),
-            ],
-          ),
-        ],
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (isInDashboard) const Gap(24.0),
+                Text(
+                  title,
+                  style: titleStyle ?? context.h2,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                IconButton(
+                  padding: const EdgeInsets.all(14),
+                  onPressed: onNotificationTap ??
+                      () => context.pushRoute(const NotificationsRoute()),
+                  icon: const Icon(EcommerceIcons.bell),
+                ),
+                const Gap(24.0),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

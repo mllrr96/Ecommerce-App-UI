@@ -170,9 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
-                          child: Divider(
-                            height: 0,
-                          ),
+                          child: Divider(),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.0),

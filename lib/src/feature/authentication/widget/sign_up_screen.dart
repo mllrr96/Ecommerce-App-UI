@@ -194,7 +194,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Expanded(
                           child: Divider(
-                            height: 0,
                           ),
                         ),
                         Padding(
