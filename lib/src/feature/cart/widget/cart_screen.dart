@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:sizzle_starter/src/core/widget/appbar/e_app_bar.dart';
-import 'package:sizzle_starter/src/feature/cart/widget/empty_cart.dart';
+import 'package:sizzle_starter/src/feature/cart/widget/full_cart.dart';
 
 @RoutePage()
 class CartScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
               indent: 24,
               endIndent: 24,
             ),
-            Expanded(child: EmptyCart()),
+            Expanded(child: FullCart()),
           ],
         ),
       );
