@@ -59,7 +59,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           style: context.b1SemiBold,
                         ),
                         ShadButton.ghost(
-                          onPressed: () {},
+                          onPressed: () =>
+                              context.pushRoute(const AddressRoute()),
                           child: const Text('Change'),
                         ),
                       ],
