@@ -52,7 +52,7 @@ dependencies:
   clock: ^1.1.1
 
   # UI
-  shadcn_ui: ^0.16.3
+  shadcn_ui: ^0.17.4
   google_fonts: ^6.2.1
   gap: ^3.0.1
 
