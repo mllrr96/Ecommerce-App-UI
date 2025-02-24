@@ -2,7 +2,6 @@ import 'package:clock/clock.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sizzle_starter/src/core/constant/application_config.dart';
 import 'package:sizzle_starter/src/core/utils/error_reporter/error_reporter.dart';
-import 'package:sizzle_starter/src/core/utils/error_reporter/sentry_error_reporter.dart';
 import 'package:sizzle_starter/src/core/utils/logger/logger.dart';
 import 'package:sizzle_starter/src/feature/initialization/model/dependencies_container.dart';
 
@@ -141,29 +140,4 @@ class AppLoggerFactory extends Factory<AppLogger> {
 
   @override
   AppLogger create() => AppLogger(observers: observers);
-}
-
-/// {@template error_reporter_factory}
-/// Factory that creates an instance of [ErrorReporter].
-/// {@endtemplate}
-class ErrorReporterFactory extends AsyncFactory<ErrorReporter> {
-  /// {@macro error_reporter_factory}
-  const ErrorReporterFactory(this.config);
-
-  /// Application configuration
-  final ApplicationConfig config;
-
-  @override
-  Future<ErrorReporter> create() async {
-    final errorReporter = SentryErrorReporter(
-      sentryDsn: config.sentryDsn,
-      environment: config.environment.value,
-    );
-
-    if (config.sentryDsn.isNotEmpty) {
-      await errorReporter.initialize();
-    }
-
-    return errorReporter;
-  }
 }

@@ -13,8 +13,8 @@ class NewCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    onTap: context.unfocus,
-    child: Scaffold(
+        onTap: context.unfocus,
+        child: Scaffold(
           appBar: const EAppBar(title: 'New Card'),
           body: SafeArea(
             child: Padding(
@@ -29,7 +29,7 @@ class NewCardScreen extends StatelessWidget {
                   ),
                   const Gap(16.0),
                   ShadInputFormField(
-                    prefix: const SizedBox(height: 52),
+                    leading: const SizedBox(height: 52),
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     label: const Text('Card Number'),
                     placeholder: const Text('Enter your card number'),
@@ -39,7 +39,7 @@ class NewCardScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ShadInputFormField(
-                          prefix: const SizedBox(height: 52),
+                          leading: const SizedBox(height: 52),
                           padding: const EdgeInsets.symmetric(horizontal: 12),
                           label: const Text('Expiry Date'),
                           placeholder: const Text('MM/YY'),
@@ -48,8 +48,8 @@ class NewCardScreen extends StatelessWidget {
                       const Gap(10),
                       Expanded(
                         child: ShadInputFormField(
-                          prefix: const SizedBox(height: 52),
-                          suffix: const Icon(
+                          leading: const SizedBox(height: 52),
+                          trailing: const Icon(
                             EcommerceIcons.question,
                             color: EColors.primary400,
                           ),
@@ -73,5 +73,5 @@ class NewCardScreen extends StatelessWidget {
             ),
           ),
         ),
-  );
+      );
 }
