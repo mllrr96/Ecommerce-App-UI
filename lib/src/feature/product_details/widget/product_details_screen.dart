@@ -82,7 +82,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 borderRadius: BorderRadius.circular(10),
                 child: Stack(
                   children: [
-                    ShadImage(
+                    Image.asset(
                       widget.product.imageUrl,
                       width: double.infinity,
                     ),

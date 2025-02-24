@@ -108,14 +108,14 @@ class _FaqScreenState extends State<FaqScreen> {
                         ShadInputFormField(
                           placeholder: const Text('Search'),
                           padding: const EdgeInsets.symmetric(horizontal: 24),
-                          prefix: const SizedBox(
+                          leading: const SizedBox(
                             height: 52,
                             child: Icon(
                               EcommerceIcons.search,
                               color: EColors.primary300,
                             ),
                           ),
-                          suffix: const SizedBox(
+                          trailing: const SizedBox(
                             height: 52,
                             child: Icon(
                               EcommerceIcons.mic,

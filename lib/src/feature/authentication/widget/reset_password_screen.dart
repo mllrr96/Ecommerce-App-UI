@@ -84,7 +84,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           obscureText: !isPasswordVisible,
                           placeholder: const Text('Enter your password'),
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          suffix: SizedBox(
+                          trailing: SizedBox(
                             height: 52,
                             width: 52,
                             child: showEye
@@ -121,7 +121,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           obscureText: !isPasswordVisible2,
                           placeholder: const Text('Enter your password'),
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          suffix: SizedBox(
+                          trailing: SizedBox(
                             height: 52,
                             width: 52,
                             child: showEye2

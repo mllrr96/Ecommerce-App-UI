@@ -29,13 +29,13 @@ class MyDetailsScreen extends StatelessWidget {
               const Divider(thickness: 2),
               ShadInputFormField(
                 label: const Text('Full Name'),
-                suffix: const SizedBox(height: 52),
+                trailing: const SizedBox(height: 52),
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
               ),
               const Gap(10),
               ShadInputFormField(
                 label: const Text('Email'),
-                suffix: const SizedBox(height: 52),
+                trailing: const SizedBox(height: 52),
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
               ),
               const Gap(10),
@@ -71,7 +71,7 @@ class MyDetailsScreen extends StatelessWidget {
               const Gap(10),
               ShadInputFormField(
                 label: const Text('Phone Number'),
-                suffix: const SizedBox(height: 52),
+                trailing: const SizedBox(height: 52),
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
               ),
             ],

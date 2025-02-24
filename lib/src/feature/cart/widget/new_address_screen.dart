@@ -23,7 +23,7 @@ class NewAddressScreen extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.topCenter,
-                  child: ShadImage(
+                  child: Image.asset(
                     Assets.images.map.path,
                     width: double.infinity,
                   ),
@@ -61,7 +61,7 @@ class NewAddressScreen extends StatelessWidget {
                           ShadInputFormField(
                             label: const Text('Address Nickname'),
                             padding: const EdgeInsets.symmetric(horizontal: 24),
-                            suffix: const SizedBox(
+                            trailing: const SizedBox(
                               height: 52,
                             ),
                           ),
@@ -69,7 +69,7 @@ class NewAddressScreen extends StatelessWidget {
                           ShadInputFormField(
                             label: const Text('Full Address'),
                             padding: const EdgeInsets.symmetric(horizontal: 24),
-                            suffix: const SizedBox(
+                            trailing: const SizedBox(
                               height: 52,
                             ),
                           ),

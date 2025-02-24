@@ -1,6 +1,5 @@
 name: sizzle_starter
 description: Production-ready template for Flutter applications.
-# Prevent accidental publishing to pub.dev.
 publish_to: "none"
 
 version: 0.0.1+1
@@ -10,7 +9,7 @@ environment:
   flutter: ">=3.24.4 <4.0.0"
 
 dependencies:
-  # Flutter SDK
+  # Flutter
   flutter:
     sdk: flutter
   flutter_test:
@@ -27,7 +26,7 @@ dependencies:
   rxdart: ^0.28.0
 
   # BLoC
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.0.0
 
   # Storing data
   shared_preferences: ^2.3.2
@@ -52,9 +51,10 @@ dependencies:
   clock: ^1.1.1
 
   # UI
-  shadcn_ui: ^0.16.3
+  shadcn_ui: ^0.20.3
   google_fonts: ^6.2.1
   gap: ^3.0.1
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   # Testing

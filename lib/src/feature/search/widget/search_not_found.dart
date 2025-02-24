@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:sizzle_starter/src/core/constant/colors.dart';
 import 'package:sizzle_starter/src/core/constant/generated/assets.gen.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
@@ -12,7 +11,7 @@ class SearchNotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [
-          ShadImage(Assets.images.searchDuotone.path),
+          Image.asset(Assets.images.searchDuotone.path),
           const Gap(20),
           Text('No Results Found!', style: context.h4),
           const Gap(10),

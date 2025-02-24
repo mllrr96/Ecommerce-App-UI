@@ -1,7 +1,7 @@
 version: "3"
 
 tasks:
-  flutter:get:
+  get:
     desc: Get flutter dependencies
     summary: |
       Get flutter dependencies
@@ -15,29 +15,32 @@ tasks:
     cmds:
       - dart run build_runner build -d
 
-  dart:gen:watch:
+  upgrade:
+    desc: Upgrade flutter dependencies
+    summary: |
+      Run codegen
+    cmds:
+      - flutter pub upgrade --major-versions
+
+  gen:clean:
+    desc: Generate dart files
+    summary: |
+      Run codegen
+    cmds:
+      - flutter clean
+      - flutter pub get
+      - dart run build_runner build -d
+
+  gen:watch:
     desc: Generate dart files
     summary: |
       Watch codegen
     cmds:
       - dart run build_runner watch -d
 
-  # Template-related, safe to be removed for production
-  tmpl:init:
-    desc: Initialize template for development
+  gen:tr:
+    desc: Generate translations
     summary: |
-      Initialize template for development.
-      Safe to be deleted for production.
-    deps:
-      - tmpl:git:config
+      Run codegen
     cmds:
-      - flutter create .
-
-  tmpl:git:config:
-    desc: Configure git for template development
-    summary: |
-      Configure git for template development. 
-      Safe to be deleted for production.
-    cmds:
-      - git config core.excludesfile .gitignore-dev
-  # Template-related, safe to be removed for production
+      - flutter gen-l10n

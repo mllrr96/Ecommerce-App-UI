@@ -44,11 +44,11 @@ class _SplashScreenState extends State<SplashScreen> {
           body: Stack(
             alignment: Alignment.center,
             children: [
-              ShadImage(Assets.images.logoAppSvg),
+              SvgPicture.asset(Assets.images.logoAppSvg),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ShadImage(
+                  SvgPicture.asset(
                     Assets.images.splashBackground,
                     width: context.width,
                   ),

@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       label: const Text('Full Name'),
                       placeholder: const Text('Enter your full name'),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      suffix: const SizedBox(height: 52),
+                      trailing: const SizedBox(height: 52),
                     ),
                     const Gap(16.0),
                     ShadInputFormField(
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       label: const Text('Email'),
                       placeholder: const Text('Enter your email'),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      suffix: const SizedBox(height: 52),
+                      trailing: const SizedBox(height: 52),
                     ),
                     const Gap(16.0),
                     Focus(
@@ -122,7 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         obscureText: !isPasswordVisible,
                         placeholder: const Text('Enter your password'),
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        suffix: SizedBox(
+                        trailing: SizedBox(
                           height: 52,
                           width: 52,
                           child: showEye

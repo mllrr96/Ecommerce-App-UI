@@ -11,7 +11,6 @@ class MaterialContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ShadApp.router(
-        debugShowCheckedModeBanner: false,
         localizationsDelegates: Localization.localizationDelegates,
         supportedLocales: Localization.supportedLocales,
         routerConfig: _appRouter.config(),

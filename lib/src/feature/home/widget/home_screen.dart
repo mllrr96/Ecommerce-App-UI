@@ -68,11 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               placeholder: Text('Search for clothes...'),
                               readOnly: true,
-                              prefix: Icon(
+                              leading: Icon(
                                 EcommerceIcons.search,
                                 color: EColors.primary300,
                               ),
-                              suffix: Icon(
+                              trailing: Icon(
                                 EcommerceIcons.mic,
                                 color: EColors.primary300,
                               ),

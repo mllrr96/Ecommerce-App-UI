@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       label: const Text('Email'),
                       placeholder: const Text('Enter your email'),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      suffix: const SizedBox(height: 52),
+                      trailing: const SizedBox(height: 52),
                     ),
                     const Gap(16.0),
                     Focus(
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         obscureText: !isPasswordVisible,
                         placeholder: const Text('Enter your password'),
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        suffix: SizedBox(
+                        trailing: SizedBox(
                           height: 52,
                           width: 52,
                           child: showEye
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Row(
                         children: [
-                          ShadImage(
+                          SvgPicture.asset(
                             Assets.images.logosGoogleIcon,
                             width: 24,
                           ),

@@ -61,11 +61,11 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       placeholder: const Text('Search for clothes...'),
                       cursorHeight: 30,
-                      prefix: const Icon(
+                      leading: const Icon(
                         EcommerceIcons.search,
                         color: EColors.primary300,
                       ),
-                      suffix: const Icon(
+                      trailing: const Icon(
                         EcommerceIcons.mic,
                         color: EColors.primary300,
                       ),

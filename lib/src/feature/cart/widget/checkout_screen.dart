@@ -156,7 +156,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       children: [
                         const Expanded(
                           child: ShadInput(
-                            prefix: Icon(
+                            leading: Icon(
                               EcommerceIcons.discount,
                               color: EColors.primary300,
                             ),

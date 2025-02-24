@@ -72,7 +72,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         label: const Text('Email'),
                         placeholder: const Text('Enter your email'),
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        suffix: const SizedBox(height: 52),
+                        trailing: const SizedBox(height: 52),
                       ),
                     ],
                   ),
