@@ -10,9 +10,9 @@ An elegant and modern **E-Commerce App UI** built with Flutter, inspired by the 
 
 ## 📸 Screenshots
 
-| Home Screen                                                                                    | Product Page                                                                                   | Cart Page                                                                                            |
-|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| ![Home](https://github.com/mllrr96/Medusa-Admin-Flutter/blob/main/assets/screenshots/Home.png) | ![Cart](https://github.com/mllrr96/Medusa-Admin-Flutter/blob/main/assets/screenshots/Cart.png) | ![Onboard](https://github.com/mllrr96/Medusa-Admin-Flutter/blob/main/assets/screenshots/Onboard.png) |
+| Home Screen                                                                             | Product Page                                                                            | Cart Page                                                                                     |
+|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| ![Home](https://github.com/mllrr96/ecommerce-app/blob/main/assets/screenshots/Home.png) | ![Cart](https://github.com/mllrr96/ecommerce-app/blob/main/assets/screenshots/Cart.png) | ![Onboard](https://github.com/mllrr96/ecommerce-app/blob/main/assets/screenshots/Onboard.png) |
 
 ---
 
