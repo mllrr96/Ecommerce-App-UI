@@ -11,11 +11,38 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache CocoaPods dependencies
+        uses: actions/cache@v3
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
           architecture: x64
           flutter-version: '3.32.5'
+          cache: true
 
       - name: Setup Java
         continue-on-error: true
@@ -30,6 +57,13 @@ jobs:
       - name: Install Dependencies
         run: |
           flutter pub get
+
+      - name: Build APK
+        run: |
+          flutter build apk --release --build-number=4
+          flutter build apk --release --split-per-abi --target-platform=android-arm64 --build-number=3
+          flutter build apk --release --split-per-abi --target-platform=android-arm --build-number=2
+          flutter build apk --release --split-per-abi --target-platform=android-x64 --build-number=1
 
       - name: Generate Code
         run: |

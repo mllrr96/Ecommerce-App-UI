@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:sizzle_starter/src/core/route/app_route.gr.dart';
 import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
@@ -24,40 +25,48 @@ class EAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isInDashboard = isBackButtonVisible != null
         ? !isBackButtonVisible!
         : context.router.current.name == DashboardRoute.name;
-    return ColoredBox(
-      color: Colors.white,
-      child: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            if (!isInDashboard)
-              IconButton(
-                padding: const EdgeInsets.all(16.0),
-                onPressed: context.maybePop,
-                icon: const Icon(EcommerceIcons.arrow),
-              ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (isInDashboard) const Gap(24.0),
-                Text(
-                  title,
-                  style: titleStyle ?? context.h2,
-                ),
-              ],
-            ),
-            Row(
-              children: [
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.white,
+      ),
+      child: ColoredBox(
+        color: Colors.white,
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (!isInDashboard)
                 IconButton(
-                  padding: const EdgeInsets.all(14),
-                  onPressed: onNotificationTap ??
-                      () => context.pushRoute(const NotificationsRoute()),
-                  icon: const Icon(EcommerceIcons.bell),
+                  padding: const EdgeInsets.all(16.0),
+                  onPressed: context.maybePop,
+                  icon: const Icon(EcommerceIcons.arrow),
                 ),
-                const Gap(24.0),
-              ],
-            ),
-          ],
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (isInDashboard) const Gap(24.0),
+                  Text(
+                    title,
+                    style: titleStyle ?? context.h2,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    padding: const EdgeInsets.all(14),
+                    onPressed:
+                        onNotificationTap ?? () => context.pushRoute(const NotificationsRoute()),
+                    icon: const Icon(EcommerceIcons.bell),
+                  ),
+                  const Gap(24.0),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
