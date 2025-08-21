@@ -10,6 +10,12 @@ by [Hamza Naeem](https://www.figma.com/@hamzauix). This project serves as a UI s
 
 ---
 
+## Download:
+
+[<img src="https://github.com/user-attachments/assets/a50513b3-dbf8-48c1-bff8-1f4215fefbb9"
+alt="Get it on GitHub"
+height="80">](https://github.com/mllrr96/Ecommerce-App-UI/releases)
+
 ## 📸 Screenshots
 
 | Onboard                                                                                    | Home                                                                                    | Cart                                                                                    |
